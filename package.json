@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "seed": "node seeds",
-    "test": "test"
+    "test": "test",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidDowell/project-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DavidDowell/project-2/issues"
+  },
+  "homepage": "https://github.com/DavidDowell/project-2#readme"
 }
