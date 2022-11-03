@@ -17,7 +17,9 @@ Vote.init(
         key: "id",
       },
     },
-
+    vote_for: {
+      type: DataTypes.BOOLEAN,
+    },
     post_id: {
       type: DataTypes.INTEGER,
       references: {
