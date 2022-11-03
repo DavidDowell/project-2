@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const sequelize = require("../db/config");
 
 class Vote extends Model {}
 
@@ -11,7 +11,7 @@ Vote.init(
       autoIncrement: true,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       references: {
         model: "user",
         key: "id",
