@@ -1,5 +1,3 @@
-const { User, Post, Comment, Vote } = require("./User");
-
 const User = require("./User");
 const Post = require("./Post");
 const Comment = require("./Comment");
