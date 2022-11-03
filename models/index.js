@@ -79,4 +79,6 @@ module.exports = {
   User,
   Vote,
   Comment,
+  Tag,
+  PostTag,
 };
