@@ -17,16 +17,16 @@
   {
     "user_id": 2,
     "vote_for": true,
-    "post_id": 1
+    "post_id": 2
   },
   {
     "user_id": 3,
     "vote_for": false,
-    "post_id": 3
+    "post_id": 1
   },
   {
     "user_id": 3,
     "vote_for": true,
-    "post_id": 4
+    "post_id": 2
   }
 ]
