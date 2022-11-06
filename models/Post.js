@@ -1,7 +1,49 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../db/config");
 
-class Post extends Model {}
+class Post extends Model {
+  static vote(body, models) {
+    return models.Vote.create({
+      user_id: body.user_id,
+      vote_for: body.vote_for,
+      post_id: body.post_id,
+    }).then(() => {
+      return Post.findOne({
+        where: {
+          id: body.post_id,
+        },
+        attributes: [
+          "id",
+          "post_text",
+          "title",
+          "created_at",
+          [
+            sequelize.literal(
+              "(SELECT SUM(vote_for) - SUM(NOT vote_for) FROM vote WHERE post.id = vote.post_id)"
+            ),
+            "vote_count",
+          ],
+        ],
+        include: [
+          {
+            model: models.Comment,
+            attributes: [
+              "id",
+              "comment_text",
+              "post_id",
+              "user_id",
+              "created_at",
+            ],
+            include: {
+              model: models.User,
+              attributes: ["firstName", "lastName"],
+            },
+          },
+        ],
+      });
+    });
+  }
+}
 
 Post.init(
   {
