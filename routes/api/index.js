@@ -13,7 +13,7 @@ router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/logout", isAuthenticated, UserController.logout);
 router.use("/users", userRoutes);
-// router.use("/posts", postRoutes);
+router.use("/posts", postRoutes);
 // router.use("/comments", commentRoutes);
 // router.use("/votes", voteRoutes);
 // router.use("/tags", tagRoutes);
