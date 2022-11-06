@@ -100,6 +100,16 @@ router.post("/", (req, res) => {
     });
 });
 
+// PUT /api/vote
+router.put("/vote", (req, res) => {
+  Post.vote({ ...req.body }, { Vote, Comment, User })
+    .then((updatedVoteData) => res.json(updatedVoteData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // PUT /api/posts/:id
 router.put("/:id", (req, res) => {
   Post.update(req.body, {
