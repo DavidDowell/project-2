@@ -12,6 +12,7 @@ body {
   height: 400px;
 }
 
+
 .nav-btn {
   background: none !important;
   border: none;
@@ -58,4 +59,13 @@ body {
 
 .darkest-green {
   background-color: rgb(0, 37, 0);
+}
+
+.upvote-btn {
+  background-color: #197d0f;
+  transition: background-color .1s;
+}
+
+.upvote-btn:hover {
+  background-color: #1f9c13;
 }
