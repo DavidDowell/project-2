@@ -1,0 +1,25 @@
+<article class="post m-2 ml-0 border border-dark" style="height: 150px">
+  <div class="title d-flex pl-1 pr-1 justify-content-between">
+    <a
+      class="text-decoration-none text-dark h3"
+      href= "/dashboard/comments/{{id}}"
+      target="_blank"
+    >{{title}}</a>
+        {{format_date created_at}}
+    <div class="d-flex flex-column p-1">
+        <button type="button" class="upvote-btn">upvote</button>
+        <button type="button" class="downvote-btn">downvote</button>
+    </div>
+  </div>
+
+  <div class="ml-2">
+    {{post_text}}
+  </div>
+
+  <div class="meta d-flex justify-content-end m-4 pr-2">
+    <a
+      class="text-decoration-none text-dark"
+      href="/dashboard/comments/{{id}}"
+    >{{comments.length}} {{format_plural "comment" comments.length}}</a>
+  </div>
+</article>

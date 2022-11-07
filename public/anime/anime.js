@@ -11,5 +11,14 @@ anime({
     }
   });
 
-
+anime({
+  targets: '.register',
+  translateY: 0,
+  scale: 1,
+  rotate: '1turn',
+  loop: true,
+  easing: 'linear',
+  delay: 4000,
+  endDelay: 1000
+});
 
