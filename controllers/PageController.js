@@ -1,9 +1,9 @@
 module.exports = {
   getDashboard: (req, res) => {
     res.render(
-      'dashboard',
+      'homepage',
       {
-        welcomeMessage: `Welcome to the dashboard ${req.session.currentUser.firstName}!`,
+        welcomeMessage: `Welcome to the homepage ${req.session.currentUser.firstName}!`,
         isAuthenticated: req.session.isAuthenticated
       }
     );
