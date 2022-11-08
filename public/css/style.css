@@ -301,3 +301,8 @@ input[type="submit"]:hover {
   /* outline: 2px solid #888; */
 }
 
+.post-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
