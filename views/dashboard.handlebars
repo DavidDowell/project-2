@@ -1,1 +1,34 @@
-<h1 class="text-center mt-5">{{ welcomeMessage }}</h1>
+    {{> navbar }}
+    
+    <div class="container d-flex justify-content-center flex-wrap login p-0" style="height: 250px">
+        <h4 class="col-12 text-light post-title">Create New Post</h4>
+        <form class="new-post-form col-10">
+        <div>
+            <label class="col-10 pl-0"  for="post-title">Title</label>
+            <input name="post-title" class="col-10"  type="text" id="post-title" />
+        </div>
+        <div>
+            <label class="col-10 pl-0 pt-1" for="post-content">Content</label>
+            <textarea name="content-body" class="col-10 post-content"></textarea>
+        </div>
+        <div>
+            <button class="create col-10 mt-1 bg-secondary text-light" type="submit">Create</button>
+        </div>
+        </form>
+
+    </div>
+
+        {{#if posts.length}}
+    <section>
+    <h2 class="ml-3 mt-4">Your Posts</h2>
+    <ul class="post-list d-flex flex-wrap justify-content-center">
+        {{#each posts as |post|}}
+        <li class="col-10 m-2">
+            <div class="containter col-12 prev-post p-2 m-2 d-flex align-items-center">
+                <a href="/dashboard/comments/{{post.id}}" class="edit-link text-decoration-none text-light h4 col-10 p-1">{{post.title}}</a>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    </section>
+        {{/if}}
