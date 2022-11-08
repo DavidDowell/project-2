@@ -8,7 +8,7 @@ router.get("/", isAuthenticated, (req, res) => {
   console.log("=============");
   Post.findAll({
     where: {
-      user_id: req.session.id,
+      id: req.session.id,
     },
     attributes: [
       "id",
@@ -26,7 +26,15 @@ router.get("/", isAuthenticated, (req, res) => {
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+            model: User,
+            attributes: ["firstName", "lastName"],
+        },
       },
+      {
+        model: User,
+        attributes: ["firstName", "lastName"]
+      }
     ],
   })
     .then((dbPostData) => {
@@ -60,7 +68,15 @@ router.get("/comments/:id", isAuthenticated, (req, res) => {
       {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+            model: User,
+            attributes: ["firstName", "lastName"],
+        },
       },
+      {
+        model: User,
+        attributes: ["firstName", "lastName"]
+      }
     ],
   })
     .then((dbPostData) => {
@@ -69,7 +85,7 @@ router.get("/comments/:id", isAuthenticated, (req, res) => {
 
         res.render("comments", {
           post,
-          loggedIn: true,
+          isAuthenticated: Boolean(req.session.isAuthenticated),
         });
       } else {
         res.status(404).end();
