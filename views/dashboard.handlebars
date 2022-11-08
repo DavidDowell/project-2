@@ -1,6 +1,14 @@
-    
+{{#each posts as |post|}}
+  <li>
+    {{> post-info post }}
+  </li>
+ {{/each}}
 
-    
+<button class="createPostBtn">
+    <span>Create Post</span>
+    <i class="bi bi-plus-lg"></i>
+ </button>
+
 <!-- Create Post Modal -->
 <div class="postModal">
 
@@ -16,3 +24,5 @@
     </form>
   
   </div>
+
+  <script src="js/add-post.js"></script>
