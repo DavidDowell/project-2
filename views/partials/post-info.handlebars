@@ -1,0 +1,31 @@
+   <div class="post">
+            <h4 class="postTitle">{{title}}</h4>
+            <p class="postContent">{{post_text}}</p>
+            <div class="postInfo"><span class="author">Benjamin</span> 10 min ago</div>
+            <div class="likes">
+                <i class="bi bi-hand-thumbs-up"><span class="voteCount">5</span></i>
+                <i class="bi bi-hand-thumbs-down"></i>
+             </div>
+            <button class="addCommentBtn">Add Comment</button>
+            
+            <form class="addCommentForm closed">
+                <textarea type="text" class="commentTextArea" name="commentTextArea"></textarea>
+                <label for="commentTextArea"></label>
+                <div class="btns">
+                    <button class="cancel">Cancel</button>
+                    <input class="submit" type="submit"></input>
+                </div>
+            </form>
+
+            <button class="viewCommentsBtn">{{comment.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
+
+
+{{#if comments.length}}
+<section>  
+    {{#each comments as |comment|}}
+      {{> comment}}    
+    {{/each}}
+</section>
+{{/if}}       
+     
+ </div>
