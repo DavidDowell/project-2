@@ -1,9 +1,9 @@
-{{> navbar }}
-<ol class="post-list pl-0">
+{{> navbar}}
+
+<ol class="post-list">
   {{#each posts as |post|}}
   <li>
     {{> post-info post }}
   </li>
   {{/each}}
 </ol>
-<script src="/js/logout.js"></script>

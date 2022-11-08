@@ -1,25 +1,31 @@
-<article class="post m-2 ml-0 border border-dark" style="height: 150px">
-  <div class="title d-flex pl-1 pr-1 justify-content-between">
-    <a
-      class="text-decoration-none text-dark h3"
-      href= "/dashboard/comments/{{id}}"
-      target="_blank"
-    >{{title}}</a>
-        {{format_date created_at}}
-    <div class="d-flex flex-column p-1">
-        <button type="button" class="upvote-btn">upvote</button>
-        <button type="button" class="downvote-btn">downvote</button>
-    </div>
-  </div>
+   <div class="post">
+            <h4 class="postTitle">{{title}}</h4>
+            <p class="postContent">{{post_text}}</p>
+            <div class="postInfo"><span class="author">Benjamin</span> 10 min ago</div>
+            <div class="likes">
+                <i class="bi bi-hand-thumbs-up"><span class="voteCount">5</span></i>
+                <i class="bi bi-hand-thumbs-down"></i>
+             </div>
+            <button class="addCommentBtn">Add Comment</button>
+            
+            <form class="addCommentForm closed">
+                <textarea type="text" class="commentTextArea" name="commentTextArea"></textarea>
+                <label for="commentTextArea"></label>
+                <div class="btns">
+                    <button class="cancel">Cancel</button>
+                    <input class="submit" type="submit"></input>
+                </div>
+            </form>
 
-  <div class="ml-2">
-    {{post_text}}
-  </div>
+            <button class="viewCommentsBtn">{{comment.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
 
-  <div class="meta d-flex justify-content-end m-4 pr-2">
-    <a
-      class="text-decoration-none text-dark"
-      href="/dashboard/comments/{{id}}"
-    >{{comments.length}} {{format_plural "comment" comments.length}}</a>
-  </div>
-</article>
+
+{{#if comments.length}}
+<section>  
+    {{#each comments as |comment|}}
+      {{> comment}}    
+    {{/each}}
+</section>
+{{/if}}       
+     
+ </div>
