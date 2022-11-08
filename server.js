@@ -1,10 +1,14 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const path = require("path");
+const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const path = require('path');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const helpers = require('./middleware/helpers');
 
+const sequelize = require("./db/config");
 const sequelize = require("./db/config");
 const routes = require("./routes");
 
@@ -35,9 +39,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
 
 const force = process.env.FORCE_SYNC === "true";
+const force = process.env.FORCE_SYNC === "true";
 
 sequelize.sync({ force }).then(() => {
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
   });
+});
+
 });
