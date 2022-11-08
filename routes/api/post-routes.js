@@ -87,11 +87,10 @@ router.get("/:id", (req, res) => {
 
 // POST /api/posts
 router.post("/", (req, res) => {
-  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
     title: req.body.title,
     post_text: req.body.post_text,
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -102,7 +101,10 @@ router.post("/", (req, res) => {
 
 // PUT /api/vote
 router.put("/vote", (req, res) => {
-  Post.vote({ ...req.body }, { Vote, Comment, User })
+  Post.vote(
+    { ...req.body, user_id: req.session.user_id },
+    { Vote, Comment, User }
+  )
     .then((updatedVoteData) => res.json(updatedVoteData))
     .catch((err) => {
       console.log(err);
