@@ -6,12 +6,21 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
+    {{#if isAuthenticated }}
       <li class="nav-item active ms-auto">
         <a class="nav-link" href="/dashboard">Dashboard</span></a>
       </li>
       <li class="nav-item ms-auto">
         <button id="logout" class="nav-link nav-btn">Logout</button>
       </li>
+      {{else}}
+        <li class="nav-item active ms-auto">
+          <a class="nav-link" href="/login">Login</span></a>
+        </li>
+        <li class="nav-item active ms-auto">
+          <a class="nav-link" href="/register">Register</span></a>
+        </li>
+    {{/if}}
     </ul>
   </div>
 </nav>
