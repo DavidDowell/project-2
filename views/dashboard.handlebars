@@ -1,10 +1,57 @@
-{{#each posts as |post|}}
+        {{!-- {{#if posts.length}}
+    <section class="mr-3">
+    <h2 class="m-3">Your Posts</h2>
+        {{#each posts as |post|}}
+        <li>
+           <div class="post">
+            <a href="/comments/{{id}}" class="text-decoration-none h4 text-dark postTitle">{{title}}</a>
+            <p class="postContent">{{> post-info post }}</p>
+            <div class="postInfo"><span class="author">Yak</span><p id="time"></p></div>
+            <div class="likes">
+                <i class="bi bi-hand-thumbs-up"><span id='vote-count'>{{ vote_count }}</span></i>
+                <i class="bi bi-hand-thumbs-down"></i>
+             </div>
+            <button class="addCommentBtn">Add Comment</button>
+            
+            <form class="addCommentForm closed">
+                <textarea type="text" class="commentTextArea" name="commentTextArea"></textarea>
+                <label for="commentTextArea"></label>
+                <div class="btns">
+                    <button class="cancel">Cancel</button>
+                    <input class="submit" type="submit"></input>
+                </div>
+            </form>
+        </li>
+        {{/each}}
+
+            <button class="viewCommentsBtn">{{comment.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
+{{#if comments.length}}
+<section>  
+    {{#each comments as |comment|}}
+      {{> comment}}    
+    {{/each}}
+</section>
+<button class="createPostBtn">
+    <span>Create Post</span>
+    <i class="bi bi-plus-lg"></i>
+ </button>
+{{/if}}       
+     
+ </div>
+    </section>
+        {{/if}} --}}
+
+{{#if posts.length}}
+<ol class="post-list list-unstyled">
+  {{#each posts as |post|}}
   <li>
     {{> post-info post }}
   </li>
- {{/each}}
+  {{/each}}
+</ol>
+{{/if}}
 
-<button class="createPostBtn">
+<button class="createPostBtn mt-3" style="width: 180px">
     <span>Create Post</span>
     <i class="bi bi-plus-lg"></i>
  </button>
