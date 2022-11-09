@@ -1,26 +1,19 @@
    <div class="post">
-            <a href="/post/{{id}}" class="text-decoration-none h4 text-dark postTitle">{{title}}</a>
+            <a href="/dashboard/comments/{{id}}" class="text-decoration-none h4 text-dark postTitle">{{title}}</a>
             <p class="postContent">{{post_text}}</p>
             <div class="postInfo">
                 {{!-- <span class="author">Moo</span>  --}}
-                10 min ago
+                {{format_date created_at}}
                 </div>
-            <div class="likes">
-                {{!-- <i id="add" class="bi bi-hand-thumbs-up"> --}}
-                    <span class="voteCount">Rating: {{vote_count}}</span>
-                    {{!-- </i> --}}
-                {{!-- <i id="add" class="bi bi-hand-thumbs-down"></i> --}}
+            <div class="likes m-1 mb-0 col-4">
+                <i  id="upvote" class="bi bi-hand-thumbs-up up">
+                    <span class="voteCount"></span>
+                    </i> 
+                    Rating: {{vote_count}}
+                 <i id="downvote" class="bi bi-hand-thumbs-down down"></i>
              </div>
-            {{!-- <button class="addCommentBtn">Add Comment</button>
 
-            <form class="addCommentForm closed">
-                <textarea type="text" class="commentTextArea" name="commentTextArea"></textarea>
-                <label for="commentTextArea"></label>
-                <div class="btns">
-                    <button class="cancel">Cancel</button>
-                    <input class="submit" type="submit"></input>
-                </div>
-            </form> --}}
+             <img class="logo-2 p-0" src="/images/noSense.png" />
 
             <button class="viewCommentsBtn">{{comments.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
 

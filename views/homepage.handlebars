@@ -1,9 +1,33 @@
-<ol class="post-list list-unstyled">
-  {{#each posts as |post|}}
-  <li>
-    {{> post-info post }}
-  </li>
-  {{/each}}
-</ol>
+<div class="row">
+  <div class="col-8">
+  <ol class="post-list list-unstyled">
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post }}
+    </li>
+    {{/each}}
+  </ol>
+  </div>
+<div class="col-3 post" style="height:500px">
+  <p class="m-0">👑</p>
+  <a href="https://www.youtube.com/watch?v=ZWi5EugsPcE" target="blank" class="text-decoration-none h1 text-warning postTitle">King Yak</a>
+  <p class="postContent h4">The Detroit Lions have a chance this year!!</p>
+  <div class="postInfo">
+                {{!-- <span class="author">Moo</span>  --}}
+                </div>
+            <div class="likes m-1 mb-0 col-4">
+                <i  id="upvote" class="bi bi-hand-thumbs-up up">
+                    <span class="voteCount"></span>
+                    </i> 
+                    Rating: -100
+                 <i id="downvote" class="bi bi-hand-thumbs-down down"></i>
+             </div>
 
+             <img class="king-yak" src="/images/sports.png" />
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+<script src="/anime/king.js"></script>
 <script src="./js/view-comments.js"></script>

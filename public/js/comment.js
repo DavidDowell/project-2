@@ -39,6 +39,8 @@ async function commentFormHandler(event) {
     } else {
       alert(response.statusText);
     }
+  } else if(!comment_text) {
+    document.location.reload();
   }
 }
 

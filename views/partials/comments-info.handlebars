@@ -1,11 +1,11 @@
 <ul class="commentList">
 
-  {{#each this}}
-    <li class="comment">
-      <p class="commentText">{{comment_text}}</p>
-      <div class="commentInfo"><span class="author">{{user.username}}</span>
-        {{created_at}}</div>
-    </li>
-  {{/each}}
+{{#each this}}
+  <li class="comment border border-success rounded m-1 bg-light">
+    <p class="commentText">{{comment_text}}</p>
+    <div class="commentInfo"><span class="author">{{user.username}}</span>
+      - {{format_date created_at}}</div>
+  </li>
+{{/each}}
 
 </ul>
