@@ -1,12 +1,17 @@
    <div class="post">
             <a href="/dashboard/comments/{{id}}" class="text-decoration-none h4 text-dark postTitle">{{title}}</a>
             <p class="postContent">{{post_text}}</p>
-            <div class="postInfo"><span class="author">Moo</span> 10 min ago</div>
+            <div class="postInfo">
+                {{!-- <span class="author">Moo</span>  --}}
+                10 min ago
+                </div>
             <div class="likes">
-                <i id="add" class="bi bi-hand-thumbs-up"><span class="voteCount">{{vote_count}}</span></i>
-                <i id="add" class="bi bi-hand-thumbs-down"></i>
+                {{!-- <i id="add" class="bi bi-hand-thumbs-up"> --}}
+                    <span class="voteCount">Rating: {{vote_count}}</span>
+                    {{!-- </i> --}}
+                {{!-- <i id="add" class="bi bi-hand-thumbs-down"></i> --}}
              </div>
-            <button class="addCommentBtn">Add Comment</button>
+            {{!-- <button class="addCommentBtn">Add Comment</button>
 
             <form class="addCommentForm closed">
                 <textarea type="text" class="commentTextArea" name="commentTextArea"></textarea>
@@ -15,7 +20,7 @@
                     <button class="cancel">Cancel</button>
                     <input class="submit" type="submit"></input>
                 </div>
-            </form>
+            </form> --}}
 
             <button class="viewCommentsBtn">{{comments.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
 
