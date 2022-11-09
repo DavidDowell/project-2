@@ -22,13 +22,12 @@
 </head>
 
 <body>
-  {{#if isAuthenticated}}
+  {{!-- {{#if isAuthenticated}}
   {{> navbar}}
-  {{/if}}
+  {{/if}} --}}
   {{{ body }}}
   {{#if isAuthenticated}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
-{{!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> --}}
 </html>
