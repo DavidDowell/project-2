@@ -1,55 +1,54 @@
-document.addEventListener("click", function(event) {
-    event.stopPropagation();
-    event.preventDefault();
+async function upvoteClickHandler(event) {
+  event.preventDefault();
 
-    var voteLink = event.target.closest("a.vote");
-    if (!voteLink) {
-        return;
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+  const vote = true
+  const response = await fetch('/api/posts/vote', {
+    method: 'PUT',
+    body: JSON.stringify({
+      post_id: id,
+      vote_for: vote 
+    }),
+    headers: {
+      'Content-Type': 'application/json'
     }
+  });
 
-    if (voteLink.classList.contains("done") || voteLink.classList.contains("inprogress")) {
-        return;
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
+};
+
+async function downvoteClickHandler(event) {
+  event.preventDefault();
+
+
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+  const vote = false
+  const response = await fetch('/api/posts/vote', {
+    method: 'PUT',
+    body: JSON.stringify({
+      post_id: id,
+      vote_for: vote 
+    }),
+    headers: {
+      'Content-Type': 'application/json'
     }
+  });
 
-    var voteType = voteLink.classList.contains("up") ? "up" : "down";
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
+}
 
-    var item = voteLink.closest(".article");
 
-    var itemId = item.getAttribute("data-itemid");
-
-    if (!itemId) {
-        return;
-    }
-
-    voteLink.classList.add("inprogress");
-    var body = new FormData();
-    body.append("itemId", itemId);
-    body.append("voteType", voteType);
-
-    const response =  fetch("/api/posts/vote", {
-        method: "PUT",
-        body:  JSON.stringify({
-            post_id: id
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(function(response) {
-        if (!res.ok) {
-            throw new Error("HTTP error " + response.status);
-        }
-        return res.json();
-    })
-    .then(function(data) {
-        if (data === "ok") { // Or whatever
-            voteLink.classList.add("done");
-        } else {
-        }
-    })
-    .catch(function(error) {
-    })
-    .finally(function() {
-        voteLink.classList.remove("inprogress");
-    });
-});
+document.querySelector('#upvote').addEventListener('click', upvoteClickHandler);
+document.querySelector('#downvote').addEventListener('click', downvoteClickHandler);

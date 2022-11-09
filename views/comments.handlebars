@@ -1,13 +1,20 @@
 {{> post-info post }}
+<div class="d-flex justify-content-center">
+            <button class="addCommentBtn mt-4" style="width: 150px; height: 60px">Add Comment</button>
 
-<form class="comment-form m-2 d-flex flex-wrap justify-content-start">
-  <div class="col-12">
-    <textarea class="col-12 border-primary rounded-lg" style="height: 100px" name="comment-body"></textarea>
-  </div>
+            <form class="addCommentForm closed col-10">
+                <textarea type="text" class="commentTextArea p-2" style="height: 100px" name="commentTextArea"></textarea>
+                <label for="commentTextArea"></label>
+                <div class="btns">
+                    <button class="cancel">Cancel</button>
+                    <input class="submit" type="submit"></input>
+                </div>
+            </form>
+</div>
 
-  <div class="d-flex col-12 justify-content-center">
-    <button class="text-light bg-primary border-light rounded ml-3" type="submit">Add Comment</button>
-  </div>
-</form>
 
-{{> comments post.comments}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+<script src="/js/view-comments.js"></script>
+<script src="/js/comment.js"></script>
+<script src="/js/vote.js"></script>
+<script src="/anime/upanddown.js"></script>
