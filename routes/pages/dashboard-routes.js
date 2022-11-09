@@ -4,11 +4,9 @@ const { Post, User, Comment, Vote, Tag, PostTag } = require("../../models");
 const isAuthenticated = require("../../middleware/isAuthenticated");
 
 router.get("/", isAuthenticated, (req, res) => {
-  console.log(req.session);
-  console.log("=============");
   Post.findAll({
     where: {
-      id: req.session.id,
+      user_id: req.session.user_id,
     },
     attributes: [
       "id",
@@ -27,14 +25,10 @@ router.get("/", isAuthenticated, (req, res) => {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
-            model: User,
-            attributes: ["firstName", "lastName"],
+          model: User,
+          attributes: ["firstName", "lastName"],
         },
       },
-      {
-        model: User,
-        attributes: ["firstName", "lastName"]
-      }
     ],
   })
     .then((dbPostData) => {
@@ -69,14 +63,14 @@ router.get("/comments/:id", isAuthenticated, (req, res) => {
         model: Comment,
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
-            model: User,
-            attributes: ["firstName", "lastName"],
+          model: User,
+          attributes: ["firstName", "lastName"],
         },
       },
       {
         model: User,
-        attributes: ["firstName", "lastName"]
-      }
+        attributes: ["firstName", "lastName"],
+      },
     ],
   })
     .then((dbPostData) => {
