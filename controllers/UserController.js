@@ -20,6 +20,7 @@ module.exports = {
       req.session.save(() => {
         req.session.isAuthenticated = true;
         req.session.currentUser = user;
+        req.session.user_id = user.id;
         req.session.loggedIn = true;
         res.status(200).json(user);
       });
@@ -60,6 +61,7 @@ module.exports = {
       req.session.save(() => {
         req.session.isAuthenticated = true;
         req.session.currentUser = user;
+        req.session.user_id = user.id;
         req.session.loggedIn = true;
         res.status(200).json({ user, message: "You are now logged in!" });
       });
