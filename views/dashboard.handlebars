@@ -1,5 +1,10 @@
 {{> navbar}}
 
+<button class="createPostBtn mt-3" style="width: 180px">
+    <span>Create Post</span>
+    <i class="bi bi-plus-lg"></i>
+ </button>
+
 {{#if posts.length}}
 <ol class="post-list list-unstyled">
   {{#each posts as |post|}}
@@ -10,10 +15,7 @@
 </ol>
 {{/if}}
 
-<button class="createPostBtn mt-3" style="width: 180px">
-    <span>Create Post</span>
-    <i class="bi bi-plus-lg"></i>
- </button>
+
 
 <!-- Create Post Modal -->
 <div class="postModal">
