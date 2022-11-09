@@ -10,7 +10,7 @@ router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/logout", isAuthenticated, UserController.logout);
 router.use("/users", userRoutes);
-router.use("/posts", isAuthenticated, postRoutes);
+router.use("/posts", postRoutes);
 router.use("/comments", isAuthenticated, commentRoutes);
 
 module.exports = router;

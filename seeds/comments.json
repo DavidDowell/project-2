@@ -1,0 +1,47 @@
+[
+  {
+    "comment_text": "asfgbasdfhasdfhbasfgh",
+    "user_id": 1,
+    "post_id": 1
+  },
+  {
+    "comment_text": "PHRASE HERE",
+    "user_id": 2,
+    "post_id": 1
+  },
+  {
+    "comment_text": "ZXCVBNM",
+    "user_id": 1,
+    "post_id": 2
+  },
+  {
+    "comment_text": "a",
+    "user_id": 3,
+    "post_id": 1
+  },
+  {
+    "comment_text": "qwertyuiop",
+    "user_id": 3,
+    "post_id": 2
+  },
+  {
+    "comment_text": "aaa",
+    "user_id": 1,
+    "post_id": 1
+  },
+  {
+    "comment_text": "b",
+    "user_id": 3,
+    "post_id": 1
+  },
+  {
+    "comment_text": "AAA",
+    "user_id": 1,
+    "post_id": 2
+  },
+  {
+    "comment_text": "ajsdfbgopaiusdfbgpsaiubfgiujsadfgoijnasdfpgjbaspoifdjbgoaisdjfbgpoiajs",
+    "user_id": 2,
+    "post_id": 2
+  }
+]
