@@ -1,7 +1,7 @@
 # project-2
 ![alt text](public/images/tiktak.png) 
 
-CONTENTS OF THIS FILE
+## CONTENTS OF THIS FILE
 ---------------------
 
  * Introduction
@@ -11,21 +11,22 @@ CONTENTS OF THIS FILE
  * Maintainers
 
 
-INTRODUCTION
+## INTRODUCTION
 ------------
 
 Tik-Tak is a full stack web application that aims to allow users to post their or their friends' hot takes on various topics, including sports, relationships, and much more. Users can interact with other users' posts, and are able to leave comments and upvote/downvote. 
 
 This was the group's first collaborative full-stack web application project--throughout planning and development, team communication was excellent. The project challenged all of us and served as valuable experience for professional development. 
 
-REQUIREMENTS
+## REQUIREMENTS
 ------------
 
-This project requires the installation of Node.js, which can be accessed from the link below:
+## This project requires the installation of Node.js, which can be accessed from the link below:
+
 https://nodejs.org/en/download/
 
 
-INSTALLATION
+## INSTALLATION
 ------------
 
 After Node.js has been installed, the following technologies must be installed within a local terminal:
@@ -37,7 +38,7 @@ Connect Session using Sequelize (using npm i connect-session-sequelize)
 Anime.js (using npm i animejs --save)
 
 
-FUNCTIONALITY
+## FUNCTIONALITY
 -------------
 
 First, navigate to the deployed application on Heroku: 
@@ -60,7 +61,7 @@ If a user wishes to sign out of the application, they can click on the "log out"
 application's login page. 
 
 
-MAINTAINERS
+## MAINTAINERS
 -----------
 
  * David Dowell - https://github.com/DavidDowell
