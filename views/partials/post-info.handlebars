@@ -3,8 +3,8 @@
             <p class="postContent">{{post_text}}</p>
             <div class="postInfo"><span class="author">Moo</span> 10 min ago</div>
             <div class="likes">
-                <i id="add" class="bi bi-hand-thumbs-up"><span class="voteCount">{{vote_count}}</span></i>
-                <i id="add" class="bi bi-hand-thumbs-down"></i>
+                <button type="button" class="border-0 p-1" id="upvote"><i class="bi bi-hand-thumbs-up"><span></span></i></button>{{vote_count}}
+                <button type="button" class="border-0 p-1"  id="downvote"><i class="bi bi-hand-thumbs-down"></i></button>
              </div>
              <div>
                 <p class="yak"></p>

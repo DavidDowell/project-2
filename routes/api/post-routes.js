@@ -87,7 +87,7 @@ router.get("/:id", (req, res) => {
 });
 
 // POST /api/posts
-router.post("/", isAuthenticated, (req, res) => {
+router.post("/", (req, res) => {
   Post.create({
     title: req.body.title,
     post_text: req.body.post_text,
@@ -101,7 +101,7 @@ router.post("/", isAuthenticated, (req, res) => {
 });
 
 // PUT /api/vote
-router.put("/vote", isAuthenticated, (req, res) => {
+router.put("/vote", (req, res) => {
   Post.vote(
     { ...req.body, user_id: req.session.user_id },
     { Vote, Comment, User }
@@ -114,7 +114,7 @@ router.put("/vote", isAuthenticated, (req, res) => {
 });
 
 // PUT /api/posts/:id
-router.put("/:id", isAuthenticated, (req, res) => {
+router.put("/:id", (req, res) => {
   Post.update(req.body, {
     where: {
       id: req.params.id,
@@ -134,7 +134,7 @@ router.put("/:id", isAuthenticated, (req, res) => {
 });
 
 // DELETE /api/posts/:id
-router.delete("/:id", isAuthenticated, (req, res) => {
+router.delete("/:id", (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id,

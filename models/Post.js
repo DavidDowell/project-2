@@ -4,7 +4,7 @@ const sequelize = require("../db/config");
 class Post extends Model {
   static vote(body, models) {
     return models.Vote.create({
-      user_id: body.user_id,
+      user_id: session.user_id,
       vote_for: body.vote_for,
       post_id: body.post_id,
     }).then(() => {

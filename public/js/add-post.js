@@ -44,9 +44,3 @@ window.onclick = function(event) {
     postModal.style.display = "none";
   }
 }
-
-var myPix = new Array("images/Gamer.png", "images/love.png", "images/noSense.png","images/social.png","images/sports.png");
-
-var randomNum = Math.floor(Math.random() * myPix.length);
-
-document.getElementById("yak").src = myPix[randomNum];
