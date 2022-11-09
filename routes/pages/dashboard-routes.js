@@ -50,7 +50,7 @@ router.get("/", isAuthenticated, (req, res) => {
     });
 });
 
-router.get("/comments/:id", isAuthenticated, (req, res) => {
+router.get("/comments/:id", (req, res) => {
   Post.findByPk(req.params.id, {
     attributes: [
       "id",
@@ -84,8 +84,7 @@ router.get("/comments/:id", isAuthenticated, (req, res) => {
         const post = dbPostData.get({ plain: true });
 
         res.render("comments", {
-          post,
-          isAuthenticated: Boolean(req.session.isAuthenticated),
+          post
         });
       } else {
         res.status(404).end();

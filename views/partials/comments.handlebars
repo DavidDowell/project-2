@@ -1,5 +1,4 @@
-
-<ul class="commentList closed">
+{{!-- <ul class="commentList closed">
       
 {{#each this}}
     <li class="comment">
@@ -8,4 +7,17 @@
     </li>
  {{/each}}
 
- </ul>
+ </ul> --}}
+
+ <div class="comments m-2">
+  {{#each this}}
+  <section class="comment border border-dark mt-1 ml-3">
+    <div class="text p-1 font-italic text-primary">
+      {{comment_text}}
+    </div>
+    <div class="meta p-1 font-weight-bold">
+      - {{user.username}}, {{format_date created_at}}
+    </div>
+  </section>
+  {{/each}}
+</div>

@@ -1,39 +1,55 @@
-async function voteClickHandler(event) {
+document.addEventListener("click", function(event) {
+    event.stopPropagation();
     event.preventDefault();
-    let counter = 0;
-    const add = $('#add');
-    const sub = $('#sub');
 
-    add.click(function() {
-        counter++;
-        $('#vote-count').text(counter);
-    });
-
-    sub.click(function() {
-        counter--;
-        $('#count').text(counter);
-    });
-
-    console.log('hit')
-  
-    const id = window.location.toString().split('/')[
-      window.location.toString().split('/').length - 1
-    ];
-    const response = await fetch('/api/posts/vote', {
-      method: 'PUT',
-      body: JSON.stringify({
-        post_id: id
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  
-    if (response.ok) {
-      document.location.reload();
-    } else {
-      alert(response.statusText);
+    var voteLink = event.target.closest("a.vote");
+    if (!voteLink) {
+        return;
     }
-  }
 
-  
+    if (voteLink.classList.contains("done") || voteLink.classList.contains("inprogress")) {
+        return;
+    }
+
+    var voteType = voteLink.classList.contains("up") ? "up" : "down";
+
+    var item = voteLink.closest(".article");
+
+    var itemId = item.getAttribute("data-itemid");
+
+    if (!itemId) {
+        return;
+    }
+
+    voteLink.classList.add("inprogress");
+    var body = new FormData();
+    body.append("itemId", itemId);
+    body.append("voteType", voteType);
+
+    const response =  fetch("/api/posts/vote", {
+        method: "PUT",
+        body:  JSON.stringify({
+            post_id: id
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(function(response) {
+        if (!res.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        return res.json();
+    })
+    .then(function(data) {
+        if (data === "ok") { // Or whatever
+            voteLink.classList.add("done");
+        } else {
+        }
+    })
+    .catch(function(error) {
+    })
+    .finally(function() {
+        voteLink.classList.remove("inprogress");
+    });
+});
