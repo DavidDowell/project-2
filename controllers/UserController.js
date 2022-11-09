@@ -1,16 +1,18 @@
-const router = require('express').Router();
-const { User } = require('../models');
+const router = require("express").Router();
+const { User } = require("../models");
 
 // CREATE new user
 module.exports = {
   register: async (req, res) => {
-    const { body: { firstName, lastName, email, password } } = req;
+    const {
+      body: { firstName, lastName, email, password },
+    } = req;
     try {
       const user = await User.create({
         firstName,
         lastName,
         email,
-        password
+        password,
       });
 
       delete user.password;
@@ -18,6 +20,7 @@ module.exports = {
       req.session.save(() => {
         req.session.isAuthenticated = true;
         req.session.currentUser = user;
+        req.session.loggedIn = true;
         res.status(200).json(user);
       });
     } catch (err) {
@@ -27,15 +30,19 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    const { body: { email, password } } = req;
+    const {
+      body: { email, password },
+    } = req;
     try {
       const user = await User.findOne({
         where: { email },
-        attributes: { exclude: ['createdAt, updatedAt'] },
+        attributes: { exclude: ["createdAt, updatedAt"] },
       });
 
       if (!user) {
-        res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
+        res
+          .status(400)
+          .json({ message: "Incorrect email or password. Please try again!" });
         return;
       }
 
@@ -44,7 +51,7 @@ module.exports = {
       if (!validPassword) {
         res
           .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
+          .json({ message: "Incorrect email or password. Please try again!" });
         return;
       }
 
@@ -53,7 +60,8 @@ module.exports = {
       req.session.save(() => {
         req.session.isAuthenticated = true;
         req.session.currentUser = user;
-        res.status(200).json({ user, message: 'You are now logged in!' });
+        req.session.loggedIn = true;
+        res.status(200).json({ user, message: "You are now logged in!" });
       });
     } catch (err) {
       console.log(err);
@@ -69,5 +77,5 @@ module.exports = {
     } else {
       res.status(404).end();
     }
-  }
-}
+  },
+};

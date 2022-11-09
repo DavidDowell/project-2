@@ -1,3 +1,15 @@
+var cancelBtn = document.getElementsByClassName("cancel");
+var addCommentBtn = document.querySelector(".addCommentBtn");
+var addCommentForm = document.querySelector(".addCommentForm");
+addCommentBtn.addEventListener("click", () => {
+  addCommentBtn.classList.toggle("closed");
+  addCommentForm.classList.toggle("closed");
+});
+cancelBtn.onclick = function () {
+  addCommentBtn.classList.remove("closed");
+  addCommentForm.classList.add("closed");
+};
+
 async function commentFormHandler(event) {
   event.preventDefault();
 
