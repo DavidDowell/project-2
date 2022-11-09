@@ -10,7 +10,7 @@ router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/logout", isAuthenticated, UserController.logout); //isAuthenticated  in middle
 router.use("/users", userRoutes);
-router.use("/posts", postRoutes);  //isAuthenticated  in middle
+router.use("/posts", postRoutes); //isAuthenticated  in middle
 router.use("/comments", commentRoutes); //isAuthenticated  in middle
 
 module.exports = router;

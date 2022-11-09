@@ -7,7 +7,7 @@
                 <i id="add" class="bi bi-hand-thumbs-down"></i>
              </div>
             <button class="addCommentBtn">Add Comment</button>
-            
+
             <form class="addCommentForm closed">
                 <textarea type="text" class="commentTextArea" name="commentTextArea"></textarea>
                 <label for="commentTextArea"></label>
@@ -17,15 +17,15 @@
                 </div>
             </form>
 
-            <button class="viewCommentsBtn">{{comment.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
+            <button class="viewCommentsBtn">{{comments.length}} Comments <div class="icon"><i class="bi bi-caret-down-fill"></div></i></button>
 
 
 {{#if comments.length}}
-<section>  
-    {{#each comments as |comment|}}
-      {{> comment}}    
-    {{/each}}
+<section class="closed">
+
+      {{> comments-info comments}}
+
 </section>
-{{/if}}       
-     
+{{/if}}
+
  </div>

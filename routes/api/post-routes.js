@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const sequelize = require("../../db/config");
 const { User, Post, Comment, Vote } = require("../../models");
-const isAuthenticated = require('../../middleware/isAuthenticated')
+const isAuthenticated = require("../../middleware/isAuthenticated");
 
 // GET all /api/posts
 router.get("/", (req, res) => {
-  Post.findAll( {
+  Post.findAll({
     attributes: [
       "id",
       "post_text",
@@ -87,7 +87,7 @@ router.get("/:id", (req, res) => {
 });
 
 // POST /api/posts
-router.post("/", (req, res) => {
+router.post("/", isAuthenticated, (req, res) => {
   Post.create({
     title: req.body.title,
     post_text: req.body.post_text,
@@ -101,7 +101,7 @@ router.post("/", (req, res) => {
 });
 
 // PUT /api/vote
-router.put("/vote", (req, res) => {
+router.put("/vote", isAuthenticated, (req, res) => {
   Post.vote(
     { ...req.body, user_id: req.session.user_id },
     { Vote, Comment, User }
@@ -114,7 +114,7 @@ router.put("/vote", (req, res) => {
 });
 
 // PUT /api/posts/:id
-router.put("/:id", (req, res) => {
+router.put("/:id", isAuthenticated, (req, res) => {
   Post.update(req.body, {
     where: {
       id: req.params.id,
@@ -134,7 +134,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE /api/posts/:id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", isAuthenticated, (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id,

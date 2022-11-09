@@ -6,7 +6,7 @@ const postSeeds = require("./posts.json");
 const voteSeeds = require("./votes.json");
 const tagSeeds = require("./tags.json");
 const postTagSeeds = require("./post-tag.json");
-// const commentSeeds = require('./comments.json')
+const commentSeeds = require("./comments.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -16,6 +16,11 @@ const seedDatabase = async () => {
     returning: true,
   }).then((users) => {
     postSeeds.forEach((val, index, arr) => {
+      arr[index].user_id = users.map((user) => user.dataValues.id)[
+        arr[index].user_id - 1
+      ];
+    });
+    commentSeeds.forEach((val, index, arr) => {
       arr[index].user_id = users.map((user) => user.dataValues.id)[
         arr[index].user_id - 1
       ];
@@ -38,6 +43,11 @@ const seedDatabase = async () => {
   // });
 
   await Vote.bulkCreate(voteSeeds, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  await Comment.bulkCreate(commentSeeds, {
     individualHooks: true,
     returning: true,
   });
