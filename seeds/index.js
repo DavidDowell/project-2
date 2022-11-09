@@ -37,6 +37,11 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  // await Comment.bulkCreate(commentSeeds, {
+  //   individualHooks: true,
+  //   returning: true,
+  // });
+
   await Vote.bulkCreate(voteSeeds, {
     individualHooks: true,
     returning: true,
