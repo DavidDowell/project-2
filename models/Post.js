@@ -34,10 +34,6 @@ class Post extends Model {
               "user_id",
               "created_at",
             ],
-            include: {
-              model: models.User,
-              attributes: ["firstName", "lastName"],
-            },
           },
         ],
       });

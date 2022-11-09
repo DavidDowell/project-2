@@ -103,8 +103,12 @@ router.post("/", isAuthenticated, (req, res) => {
 // PUT /api/vote
 router.put("/vote", isAuthenticated, (req, res) => {
   Post.vote(
-    { ...req.body, user_id: req.session.user_id },
-    { Vote, Comment, User }
+    {
+      post_id: req.body.post_id,
+      vote_for: req.body.vote_for,
+      user_id: req.session.user_id,
+    },
+    { Vote, Post, Comment }
   )
     .then((updatedVoteData) => res.json(updatedVoteData))
     .catch((err) => {
