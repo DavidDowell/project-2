@@ -18,8 +18,6 @@ async function upvoteClickHandler(event) {
 
   if (response.ok) {
     document.location.reload();
-  } else {
-    alert(response.statusText);
   }
 }
 
@@ -43,8 +41,6 @@ async function downvoteClickHandler(event) {
 
   if (response.ok) {
     document.location.reload();
-  } else {
-    alert(response.statusText);
   }
 }
 
