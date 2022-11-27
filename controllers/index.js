@@ -3,11 +3,13 @@ const UserController = require('./UserController');
 const CommentController = require('./CommentController');
 const PostController = require('./PostController');
 const DashboardController = require('./DashboardController');
+const HomeController = require('./HomeController');
 
 module.exports = {
   PageController,
   UserController,
   CommentController,
   PostController,
-  DashboardController
+  DashboardController,
+  HomeController
 };
